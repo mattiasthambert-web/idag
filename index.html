@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Idag – tre saker</title>
+  <meta name="description" content="De tre saker som gäller idag. Stor text, stora knappar, sparas i din webbläsare.">
+  <meta name="theme-color" content="#fff6e9">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topp">
+      <h1>Idag</h1>
+      <p class="datum" id="datum"></p>
+    </header>
+
+    <ol class="lista">
+      <li class="rad" data-index="0">
+        <label class="etikett" for="sak-1">Sak 1</label>
+        <div class="rad-inre">
+          <input class="falt" id="sak-1" type="text" placeholder="Skriv här…" autocomplete="off" autocapitalize="sentences" enterkeyhint="next" maxlength="100">
+          <button type="button" class="knapp knapp-klar" data-index="0" aria-pressed="false" aria-label="Bocka av sak 1">
+            <span class="bock" aria-hidden="true"></span><span class="knapp-text">Klar</span>
+          </button>
+        </div>
+      </li>
+      <li class="rad" data-index="1">
+        <label class="etikett" for="sak-2">Sak 2</label>
+        <div class="rad-inre">
+          <input class="falt" id="sak-2" type="text" placeholder="Skriv här…" autocomplete="off" autocapitalize="sentences" enterkeyhint="next" maxlength="100">
+          <button type="button" class="knapp knapp-klar" data-index="1" aria-pressed="false" aria-label="Bocka av sak 2">
+            <span class="bock" aria-hidden="true"></span><span class="knapp-text">Klar</span>
+          </button>
+        </div>
+      </li>
+      <li class="rad" data-index="2">
+        <label class="etikett" for="sak-3">Sak 3</label>
+        <div class="rad-inre">
+          <input class="falt" id="sak-3" type="text" placeholder="Skriv här…" autocomplete="off" autocapitalize="sentences" enterkeyhint="done" maxlength="100">
+          <button type="button" class="knapp knapp-klar" data-index="2" aria-pressed="false" aria-label="Bocka av sak 3">
+            <span class="bock" aria-hidden="true"></span><span class="knapp-text">Klar</span>
+          </button>
+        </div>
+      </li>
+    </ol>
+
+    <section class="botten" aria-label="Ny dag">
+      <button type="button" class="knapp knapp-nydag" id="nydag">Ny dag</button>
+      <div class="bekrafta" id="bekrafta" hidden>
+        <p class="bekrafta-text">Rensa alla tre och börja om?</p>
+        <div class="bekrafta-knappar">
+          <button type="button" class="knapp knapp-ja" id="ja-rensa">Ja, rensa</button>
+          <button type="button" class="knapp knapp-avbryt" id="avbryt">Avbryt</button>
+        </div>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
