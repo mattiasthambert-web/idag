@@ -1,0 +1,12 @@
+{
+  "name": "idag",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Idag – tre saker. Tester körs med Playwright i en riktig webbläsare.",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}
