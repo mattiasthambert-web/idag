@@ -16,9 +16,10 @@ En liten webbsida som visar dagens tre saker. Stor text, stora knappar, inget kr
 
 ## Teknik
 
-- Ren HTML, CSS och JavaScript. Inga paket, inga ramverk, inget byggsteg.
+- Ren HTML, CSS och JavaScript. Inga ramverk, inget byggsteg. Själva appen har inga paket.
 - Ingen server. Sidan är helt statisk och funkar utan nät när den väl är laddad.
 - Fungerar på mobil och dator. Allt är på svenska, även variabelnamn i koden.
+- Testerna använder Playwright (ett verktyg som styr en riktig webbläsare). Det är det enda paketet, och det används bara vid test.
 
 | Fil | Vad den gör |
 |---|---|
@@ -26,6 +27,10 @@ En liten webbsida som visar dagens tre saker. Stor text, stora knappar, inget kr
 | `style.css` | Utseendet: varma färger, stor text, stora knappar |
 | `app.js` | Logiken: läsa, spara, bocka av, rensa |
 | `favicon.svg` | Ikonen i webbläsarfliken |
+| `tests/idag.spec.js` | Testerna, ett per punkt i checklistan nedan |
+| `playwright.config.js` | Inställningar för testerna |
+| `package.json` | Talar om att Playwright behövs för test. Kommandot `npm test` |
+| `.github/workflows/test.yml` | Kör testerna automatiskt på GitHub vid varje pull request |
 
 ## Starta
 
@@ -41,7 +46,28 @@ Gå sedan till `http://localhost:8000`.
 
 ## Testa
 
-Det finns inga automatiska tester. Testa för hand så här efter varje ändring:
+### Automatiskt
+
+Första gången, installera testverktyget (kräver Node, laddar ner en Chromium-webbläsare):
+
+```bash
+npm install
+npx playwright install chromium
+```
+
+Kör sedan testerna:
+
+```bash
+npm test
+```
+
+Alla rader ska vara gröna. Testerna öppnar `index.html` i en riktig webbläsare och gör samma saker som checklistan nedan.
+
+På GitHub körs samma tester automatiskt på varje pull request (jobbet heter `test`). Är det rött ska det inte mergas.
+
+### För hand
+
+Checklista, bra att gå igenom i en riktig mobil också:
 
 1. Öppna sidan. Datumet syns överst och tre tomma rader visas.
 2. Skriv text i alla tre fälten. Ladda om sidan. Texten ska finnas kvar.
@@ -64,8 +90,10 @@ Det finns inga automatiska tester. Testa för hand så här efter varje ändring
 
 - **Ingen server, ingen inloggning.** Datan ligger i webbläsaren. Enklast möjliga. Nackdel: byter man webbläsare eller enhet följer inte datan med.
 - **Ren JavaScript utan ramverk.** Appen är så liten att ett ramverk bara skulle göra den svårare att förstå.
+- **Playwright för tester, trots regeln om inga paket.** Alternativet var att låtsas vara en webbläsare i Node med egen kod, men då testas inte `index.html` på riktigt. Playwright testar hela sidan i riktig Chromium. Paketet behövs bara för test, aldrig för att köra appen.
 
 ## Changelog
 
 - 2026-11-06: Första versionen av appen (index.html, style.css, app.js, favicon.svg, README.md).
 - 2026-11-06: AGENTS.md skapad.
+- 2026-11-06: Tester med Playwright (tests/idag.spec.js) och GitHub Actions-workflow som kör dem på varje pull request.

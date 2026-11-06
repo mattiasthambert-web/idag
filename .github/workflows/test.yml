@@ -1,0 +1,27 @@
+# Kör testerna på varje pull request. Jobbet heter "test".
+name: Tester
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hämta koden
+        uses: actions/checkout@v4
+
+      - name: Installera Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installera paket
+        run: npm ci
+
+      - name: Installera webbläsare
+        run: npx playwright install --with-deps chromium
+
+      - name: Kör testerna
+        run: npm test
