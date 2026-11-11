@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Hämta koden
         uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Installera webbläsare
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: Kör testerna
         run: npm test

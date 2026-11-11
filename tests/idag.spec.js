@@ -115,3 +115,17 @@ test('8. Enter hoppar till nästa fält', async ({ page }) => {
   await page.keyboard.press('Enter');
   await expect(page.locator('#sak-3')).toBeFocused();
 });
+
+test('9. Räknaren visar hur många som är klara', async ({ page }) => {
+  const raknare = page.locator('#raknare');
+  await expect(raknare).toHaveText('0 av 3 klara');
+
+  await page.locator('.knapp-klar').nth(0).click();
+  await expect(raknare).toHaveText('1 av 3 klara');
+
+  await page.reload();
+  await expect(raknare).toHaveText('1 av 3 klara');
+
+  await page.locator('.knapp-klar').nth(0).click();
+  await expect(raknare).toHaveText('0 av 3 klara');
+});

@@ -63,6 +63,14 @@ h1 {
   color: var(--text-svag);
 }
 
+/* Räknaren under datumet: "1 av 3 klara" */
+.raknare {
+  margin: 0.4rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+
 /* De tre raderna */
 
 .lista {

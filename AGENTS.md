@@ -77,6 +77,7 @@ Checklista, bra att gå igenom i en riktig mobil också:
 6. Tryck Ny dag, sedan Ja, rensa. Alla fält töms och "Rensat. Ny dag!" visas.
 7. Öppna webbläsarens Console (F12). Det ska inte finnas några röda fel.
 8. Testa på en mobil eller gör fönstret smalt. Knapparna ska vara lätta att träffa.
+9. Räknaren under datumet visar "0 av 3 klara" och ändras när du bockar av eller ångrar.
 
 ## Regler för arbete
 

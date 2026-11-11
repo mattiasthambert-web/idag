@@ -7,6 +7,7 @@
 
   var rader = Array.prototype.slice.call(document.querySelectorAll('.rad'));
   var datumEl = document.getElementById('datum');
+  var raknareEl = document.getElementById('raknare');
   var statusEl = document.getElementById('status');
   var nyDagKnapp = document.getElementById('nydag');
   var bekraftaEl = document.getElementById('bekrafta');
@@ -95,6 +96,8 @@
       if (lage.saker[i].text.trim()) { antalMedText++; }
       if (lage.saker[i].klar) { antalKlara++; }
     }
+    /* Räknaren överst: hur många av dagens saker som är avbockade. */
+    raknareEl.textContent = antalKlara + ' av ' + ANTAL + ' klara';
     if (antalMedText > 0 && antalKlara === ANTAL) {
       visaStatus('Alla tre är klara. Bra jobbat!');
     } else if (statusEl.textContent === 'Alla tre är klara. Bra jobbat!') {
